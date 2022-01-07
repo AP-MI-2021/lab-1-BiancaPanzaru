@@ -24,6 +24,8 @@ class Console:
                 self.handle_show_all(self.aeroport_service.get_all())
             elif opt == 'sc':
                 self.handle_show_all(self.cursa_service.get_all())
+            elif opt == 'export':
+                self.handle_export()
             elif opt == 'x':
                 break
             else:
@@ -51,4 +53,11 @@ class Console:
     def handle_show_all(self, objects):
         for obj in objects:
             print(obj)
+
+    def handle_export(self):
+        try:
+            filename = input('Nume fisier: ')
+            self.cursa_service.export_json(filename)
+        except Exception as e:
+            print(e)
 

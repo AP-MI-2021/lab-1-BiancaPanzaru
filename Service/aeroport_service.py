@@ -16,8 +16,10 @@ class AeroportService:
                      indicativ: str,
                      lungime_max: int):
         aeroport = Aeroport(id_aeroport, indicativ, lungime_max)
+        self.aeroport_validator.validare_aeroport(aeroport,
+                                                  self.aeroport_repository)
         self.aeroport_repository.create(aeroport)
-        self.aeroport_validator.validare_aeroport(aeroport)
+
 
     def get_all(self):
         return self.aeroport_repository.read()
